@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:video_player/video_player.dart';
-
+import 'dart:math';
 import 'Nutrients.dart';
 import 'main.dart';
 
@@ -96,6 +96,57 @@ class Eyemodal_State extends State<Eyemodal_> {
               },
             ),
           ),
+          Container(
+            decoration: const BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black38,
+                  blurRadius: 25,
+                  spreadRadius: 0,
+                  offset: Offset(10, 10),
+                ),
+              ],
+            ),
+            child: MaterialButton(
+              padding: const EdgeInsets.all(12.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Container(
+                    width: 380,
+                    height: 190,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: Image.asset('assets/images/eyeexa.png').image,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+
+                          Text(" Red dot  ",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold,color: Color(
+                              0xFFD2D2D2)),),
+                          Text("     ",style: TextStyle(fontSize: 9),),
+
+                        ],
+                      ),
+                    )
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Ctestins()),
+                );
+              },
+            ),
+          ),
         ],
       ),
       bottomSheet: Positioned(
@@ -175,82 +226,290 @@ class Eyemodal_State extends State<Eyemodal_> {
 }
 
 
-// class EyeHealth extends StatefulWidget {
-//   const EyeHealth({Key? key}) : super(key: key);
-//
-//   @override
-//   State<EyeHealth> createState() => _EyeHealthState();
-// }
-//
-// class _EyeHealthState extends State<EyeHealth> {
-//   late VideoPlayerController _controller;
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//     initializeVideo();
-//   }
-//
-//   void initializeVideo() async {
-//     _controller = VideoPlayerController.asset('assets/video/1.mp4');
-//     try {
-//       await _controller.initialize();
-//       setState(() {});
-//     } catch (e) {
-//       print('Error initializing video: $e');
-//     }
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Eye Health'),
-//       ),
-//       body: OrientationBuilder(
-//         builder: (context, orientation) {
-//           return Center(
-//             child: _controller.value.isInitialized
-//                 ? AspectRatio(
-//               aspectRatio: orientation == Orientation.portrait ? 16 / 9 : _controller.value.aspectRatio,
-//               child: VideoPlayer(_controller),
-//             )
-//                 : CircularProgressIndicator(),
-//           );
-//         },
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: () {
-//           Navigator.push(
-//             context,
-//             MaterialPageRoute(builder: (context) => EyeH2()),
-//           );
-//         },
-//         child: Icon(Icons.navigate_next),
-//       ),
-//     );
-//   }
-//
-//   @override
-//   void dispose() {
-//     super.dispose();
-//     _controller.dispose();
-//   }
-// }
-//
-// class EyeH2 extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Next Page'),
-//       ),
-//       body: Center(
-//         child: Text('This is the next page.'),
-//       ),
-//     );
-//   }
-// }
+class Ctestins extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Eye Exercise", style: TextStyle(fontWeight: FontWeight.bold, color: Color(
+            0xFFFFFFFF))),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20), // Adjust the value according to your preference
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 3.0,right: 3.0),
+        child: Container(
+          margin: EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(" ", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white70)),
+              ),
+              SizedBox(height: 70),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  color: Color(0xFF545454),
+                  borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Text(
+                      "Instructions",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        decoration: TextDecoration.underline,
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(height: 25),
+                    Text(
+                      "1. Keep your eyes on the moving red dot.            .",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text("2. Focus your eyes on the red dot as it moves around the screen.",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text("3. Click 'Next Level' to progress through different challenges.",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Text("=> Some advantages or benefits of Red dot Eye Exercise",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    Text("- Tracking the dot's movement exercises the muscles responsible for eye movement, which can help prevent eye fatigue and strain.",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text("- can serve as a form of relaxation and stress relief, especially when practiced in a calm environment.",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => EyeExerciseGame()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                ),
+                child: Text(
+                  'Start',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class EyeExerciseGame extends StatefulWidget {
+  @override
+  _EyeExerciseGameState createState() => _EyeExerciseGameState();
+}
+
+class _EyeExerciseGameState extends State<EyeExerciseGame> {
+  late Timer _timer;
+  late Offset _position;
+  late int _level;
+
+  @override
+  void initState() {
+    super.initState();
+    _level = 1;
+    _position = Offset(0, 0);
+    _startTimer();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(milliseconds: 16), (timer) {
+      setState(() {
+        _updatePosition();
+      });
+    });
+  }
+
+  void _updatePosition() {
+      switch (_level) {
+        case 1:
+          _position = test1();
+          break;
+        case 2:
+          _position = test2();
+          break;
+        case 3:
+          _position = test3();
+          break;
+        case 4:
+          _position = test4();
+          break;
+        case 5:
+          _position = test5();
+          break;
+      }
+  }
+
+
+  Offset test1() {
+    final double radius = min(
+        MediaQuery.of(context).size.width, MediaQuery.of(context).size.height) /
+        2;
+    final double x = MediaQuery.of(context).size.width / 2 +
+        radius * cos(DateTime.now().millisecondsSinceEpoch / 500);
+    final double y = MediaQuery.of(context).size.height / 3 +
+        radius * sin(DateTime.now().millisecondsSinceEpoch / 2000);
+    return Offset(x, y);
+  }
+
+  Offset test2() {
+    double x = MediaQuery.of(context).size.width / 2 +
+        100 * cos(DateTime.now().millisecondsSinceEpoch / 800);
+    double y = MediaQuery.of(context).size.height / 3 +
+        300 * sin(DateTime.now().millisecondsSinceEpoch / 400);
+    x = MediaQuery.of(context).size.width / 2 +
+        100 * sin(DateTime.now().millisecondsSinceEpoch / 200);
+    x = MediaQuery.of(context).size.width / 2 +
+        100 * sin(DateTime.now().millisecondsSinceEpoch / 300);
+    return Offset(x, y);
+  }
+
+  Offset test5() {
+    double radius = min(
+        MediaQuery.of(context).size.width, MediaQuery.of(context).size.height) /
+        2;
+    double x = MediaQuery.of(context).size.width / 2 +
+        radius * cos(DateTime.now().millisecondsSinceEpoch / 400);
+    double y = MediaQuery.of(context).size.height / 3 +
+        radius * sin(DateTime.now().millisecondsSinceEpoch / 600);
+    return Offset(x, y);
+  }
+
+  Offset test4() {
+    double x = MediaQuery.of(context).size.width / 2 +
+        100 * cos(DateTime.now().millisecondsSinceEpoch / 800);
+    double y = MediaQuery.of(context).size.height / 3 +
+        300 * sin(DateTime.now().millisecondsSinceEpoch / 700);
+    x = MediaQuery.of(context).size.width / 2 +
+        100 * sin(DateTime.now().millisecondsSinceEpoch / 200);
+    x = MediaQuery.of(context).size.width / 2 + 150 * sin(DateTime.now().millisecondsSinceEpoch / 300);
+    return Offset(x, y);
+  }
+  Offset test3() {
+    double x = MediaQuery.of(context).size.width / 4 +
+        100;
+    double y = MediaQuery.of(context).size.height / 2.6 +
+        300 * cos(DateTime.now().millisecondsSinceEpoch / 500);
+    return Offset(x, y);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'IrisInsight',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFFFFFFFF)),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20), // Adjust the value according to your preference
+          ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: CustomPaint(
+                painter: DotPainter(_position),
+                size: Size(double.infinity, double.infinity),
+              ),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                    _level = (_level % 5) + 1;
+                });
+              },
+              child: Text('Next Level'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DotPainter extends CustomPainter {
+  final Offset position;
+
+  DotPainter(this.position);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = Colors.red
+      ..style = PaintingStyle.fill;
+
+    canvas.drawCircle(position, 10.0, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
+
 
 
 

@@ -989,7 +989,7 @@ class ScorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String resultText = score == 3 ? "you have normal eyes" : "you have a red green colour \n               brightness";
+    String resultText = score == 3 ? "you have normal eyes" : "you have a red green colour \n               blindness";
 
     return Scaffold(
       appBar: AppBar(
