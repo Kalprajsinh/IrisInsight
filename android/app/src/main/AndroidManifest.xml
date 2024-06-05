@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="shoes"
+        android:label="IrisInsight"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'Eyecare.dart';
@@ -8,7 +7,6 @@ import 'eyeml.dart';
 import 'webview.dart';
 import 'splash_screen.dart';
 import 'check_number.dart';
-import 'package:image_picker/image_picker.dart';
 
 
 void main() async {
@@ -77,7 +75,18 @@ class MyHomePage extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.all(7.0),
-                  child: Text("Illuminating eye health through ML",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color: Colors.grey)),
+                  child: Center(
+                    child: Text(
+                      "Illuminating eye health through ML",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontFamily: 'Times New Roman',
+                      ),
+                    ),
+                  ),
+
                 ),
                 Center(
                   child: const Padding(
@@ -377,18 +386,10 @@ class MyHomePage extends StatelessWidget {
                   child: UserAccountsDrawerHeader(
                     decoration: BoxDecoration(color: Color(0xFF222B41)),
                     accountName: Text(
-                      "Hello",
-                      style: TextStyle(fontSize: 18),
+                      "IrisInsight",
+                      style: TextStyle(fontSize: 20),
                     ),
-                    accountEmail: Text("abc@gmail.com"),
-                    currentAccountPictureSize: Size.square(50),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundColor: Color(0xFF5D6696),
-                      child: Text(
-                        "A",
-                        style: TextStyle(fontSize: 30.0, color: Colors.black),
-                      ), //Text
-                    ), //circleAvatar
+                    accountEmail: Text(""), //circleAvatar
                   ), //UserAccountDrawerHeader
                 ), //DrawerHeader
 

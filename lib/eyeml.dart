@@ -346,14 +346,13 @@ class _eyeinputState extends State<eyeinput> {
   }
 
   Future<void> _sendImageToServer(BuildContext context, String imagePath) async {
-    final url = 'http://192.168.51.180:5000/predict'; // Update with your Flask server URL
+    final url = 'http://192.168.2.109:5000/predict';
     final request = http.MultipartRequest('POST', Uri.parse(url));
     request.files.add(await http.MultipartFile.fromPath('image', imagePath));
 
     final streamedResponse = await request.send();
     final response = await http.Response.fromStream(streamedResponse);
 
-    // Handle response from Flask server
     if (response.statusCode == 200) {
       setState(() {
         _predictionResult = response.body;
