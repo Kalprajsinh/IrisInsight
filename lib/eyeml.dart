@@ -346,7 +346,7 @@ class _eyeinputState extends State<eyeinput> {
   }
 
   Future<void> _sendImageToServer(BuildContext context, String imagePath) async {
-    final url = 'http://192.168.2.109:5000/predict';
+    final url = 'https://irisinsight-eye.onrender.com/predict';
     final request = http.MultipartRequest('POST', Uri.parse(url));
     request.files.add(await http.MultipartFile.fromPath('image', imagePath));
 
